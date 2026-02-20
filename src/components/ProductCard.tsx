@@ -22,7 +22,7 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
       <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-brand-beige relative">
         <img
           src={imgSrc}
-          alt={product.title}
+          alt={product?.title || 'Furniture'}
           onError={() => setImgSrc(placeholderImage)}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           referrerPolicy="no-referrer"
@@ -31,13 +31,13 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
       </div>
       <div className="mt-4 space-y-1">
         <p className="text-[10px] uppercase tracking-[0.2em] text-brand-accent/60 font-semibold">
-          {product.category}
+          {product?.category || 'Furniture'}
         </p>
         <h3 className="font-serif text-xl group-hover:text-brand-accent transition-colors">
-          {product.title}
+          {product?.title || 'Untitled Product'}
         </h3>
         <p className="font-sans font-light text-brand-accent/80">
-          ₹{product.price.toLocaleString('en-IN')}
+          ₹{(product?.price || 0).toLocaleString('en-IN')}
         </p>
       </div>
     </div>

@@ -26,29 +26,31 @@ export function Logo({ className, layoutId = "main-logo" }: { className?: string
   );
 }
 
-export function Navbar() {
+export function Navbar({ onNavClick }: { onNavClick?: (tab: string) => void }) {
   return (
     <nav className="sticky top-0 z-40 bg-brand-cream/95 backdrop-blur-md border-b border-brand-beige px-6 py-4 md:py-6 transition-all">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-6">
-        <Logo className="text-xl md:text-2xl justify-start" />
+        <button onClick={() => onNavClick?.('home')}>
+          <Logo className="text-xl md:text-2xl justify-start" />
+        </button>
         
         <div className="hidden md:flex items-center gap-8 font-serif italic text-lg">
-          <a href="#" className="hover:text-brand-accent transition-colors whitespace-nowrap">Collections</a>
-          <a href="#" className="hover:text-brand-accent transition-colors whitespace-nowrap">About Us</a>
+          <button onClick={() => onNavClick?.('collections')} className="hover:text-brand-accent transition-colors whitespace-nowrap">Collections</button>
+          <button onClick={() => onNavClick?.('about')} className="hover:text-brand-accent transition-colors whitespace-nowrap">About Us</button>
         </div>
       </div>
     </nav>
   );
 }
 
-export function BottomNav({ onSearchClick, activeTab = 'home' }: { onSearchClick: () => void, activeTab?: string }) {
+export function BottomNav({ onSearchClick, onNavClick, activeTab = 'home' }: { onSearchClick: () => void, onNavClick?: (tab: string) => void, activeTab?: string }) {
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-40 bg-brand-cream border-t border-brand-beige px-6 py-3 pb-6 md:pb-3">
       <div className="max-w-md mx-auto flex justify-between items-center">
-        <NavItem icon={<Home size={24} />} label="Home" active={activeTab === 'home'} />
+        <NavItem icon={<Home size={24} />} label="Home" active={activeTab === 'home'} onClick={() => onNavClick?.('home')} />
         <NavItem icon={<Search size={24} />} label="Search" active={activeTab === 'search'} onClick={onSearchClick} />
-        <NavItem icon={<ShoppingBag size={24} />} label="Cart" active={activeTab === 'cart'} />
-        <NavItem icon={<User size={24} />} label="Profile" active={activeTab === 'profile'} />
+        <NavItem icon={<ShoppingBag size={24} />} label="Cart" active={activeTab === 'cart'} onClick={() => onNavClick?.('cart')} />
+        <NavItem icon={<User size={24} />} label="Profile" active={activeTab === 'profile'} onClick={() => onNavClick?.('profile')} />
       </div>
     </nav>
   );
