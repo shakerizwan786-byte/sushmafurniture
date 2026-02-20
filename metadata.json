@@ -1,0 +1,7 @@
+{
+  "name": "Remix: Remix: Sushma Furniture app",
+  "description": "High-end, minimal furniture store featuring cots, sofas, mattresses, and more.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
