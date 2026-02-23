@@ -1,17 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Phone, Instagram, MapPin, Search, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { supabase } from './lib/supabase';
 import { Product, Category } from './types';
 import { Navbar, BottomNav, Logo } from './components/Navigation';
 import ProductCard from './components/ProductCard';
 import Chatbot from './components/Chatbot';
+import Privacy from './Privacy';
 import { cn } from './lib/utils';
 
 const CATEGORIES: Category[] = ['All', 'Cots', 'Sofas', 'Mattresses', 'Dressing Tables', 'Computer Tables'];
 const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800";
 
 export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<StoreFront />} />
+      <Route path="/privacy" element={<Privacy />} />
+    </Routes>
+  );
+}
+
+function StoreFront() {
+  const navigate = useNavigate();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState<Category>('All');
@@ -246,8 +258,9 @@ export default function App() {
                   />
                 </div>
               </div>
-              <div className="mt-12 text-center text-[10px] uppercase tracking-widest text-brand-accent/40">
-                © 2026 Sushma Furniture. All Rights Reserved.
+              <div className="mt-12 text-center text-[10px] uppercase tracking-widest text-brand-accent/40 flex flex-col gap-2">
+                <span>© 2026 Sushma Furniture. All Rights Reserved.</span>
+                <Link to="/privacy" className="hover:text-brand-accent transition-colors underline underline-offset-4">Privacy Policy</Link>
               </div>
             </section>
           </main>
