@@ -8,6 +8,7 @@ import { Navbar, BottomNav, Logo } from './components/Navigation';
 import ProductCard from './components/ProductCard';
 import Chatbot from './components/Chatbot';
 import Privacy from './Privacy';
+import TOS from './TOS';
 import { cn } from './lib/utils';
 
 const CATEGORIES: Category[] = ['All', 'Cots', 'Sofas', 'Mattresses', 'Dressing Tables', 'Computer Tables'];
@@ -18,6 +19,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<StoreFront />} />
       <Route path="/privacy" element={<Privacy />} />
+      <Route path="/tos" element={<TOS />} />
     </Routes>
   );
 }
@@ -260,7 +262,10 @@ function StoreFront() {
               </div>
               <div className="mt-12 text-center text-[10px] uppercase tracking-widest text-brand-accent/40 flex flex-col gap-2">
                 <span>© 2026 Sushma Furniture. All Rights Reserved.</span>
-                <Link to="/privacy" className="hover:text-brand-accent transition-colors underline underline-offset-4">Privacy Policy</Link>
+                <div className="flex justify-center gap-4">
+                  <Link to="/privacy" className="hover:text-brand-accent transition-colors underline underline-offset-4">Privacy Policy</Link>
+                  <Link to="/tos" className="hover:text-brand-accent transition-colors underline underline-offset-4">Terms of Service</Link>
+                </div>
               </div>
             </section>
           </main>

@@ -4,7 +4,7 @@ import { Navbar, Logo } from './components/Navigation';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Privacy() {
+export default function TOS() {
   const navigate = useNavigate();
 
   return (
@@ -25,11 +25,11 @@ export default function Privacy() {
             <span className="font-serif italic">Back to Home</span>
           </button>
 
-          <h1 className="font-serif text-5xl mb-12 italic text-brand-accent">Privacy Policy</h1>
+          <h1 className="font-serif text-5xl mb-12 italic text-brand-accent">Terms of Service</h1>
           
           <div className="bg-white p-10 rounded-3xl border border-brand-beige shadow-sm">
             <p className="text-xl text-brand-accent/80 leading-relaxed font-light">
-              We use your Google data only for account management.
+              By using this app, you agree to our furniture sales and delivery terms.
             </p>
           </div>
 
